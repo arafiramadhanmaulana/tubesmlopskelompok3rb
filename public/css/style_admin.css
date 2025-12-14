@@ -32,7 +32,7 @@
 .admin-header {
     background-color: var(--tc-navy);
     color: var(--tc-white);
-    padding: var(--spacing-xl) var(--spacing-xl); /* Perubahan di sini: padding vertikal lebih besar */
+    padding: var(--spacing-xl) var(--spacing-xl); 
     display: flex;
     justify-content: space-between;
     align-items: center;
