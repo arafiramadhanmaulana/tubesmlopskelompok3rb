@@ -8,11 +8,9 @@ if (!isset($_SESSION['user_id']) || $_SESSION['role'] !== 'admin') {
     exit();
 }
 
-// PERBAIKAN PATH: Tambahkan /../
 require_once __DIR__ . '/../config/config.php';
 require_once __DIR__ . '/../core/functions_upload.php';
 
-// Fungsi Helper Cadangan
 if (!function_exists('generateSafeFileName')) {
     function generateSafeFileName($originalName) {
         $extension = pathinfo($originalName, PATHINFO_EXTENSION);
@@ -37,7 +35,6 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_FILES["pdf_file"]) && $_FIL
     $originalFilename = basename($_FILES["pdf_file"]["name"]);
     $newFileName = generateSafeFileName($originalFilename);
     
-    // Folder uploads ada di dalam public
     $targetDir = __DIR__ . "/uploads/";
     if (!is_dir($targetDir)) {
         mkdir($targetDir, 0777, true);
