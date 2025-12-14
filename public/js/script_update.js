@@ -1,6 +1,5 @@
-// FILE: js/script_update.js
 const UPDATE_API_URL = 'process_update.php'; 
-const MAX_FILE_SIZE = 10 * 1024 * 1024; // 10MB
+const MAX_FILE_SIZE = 10 * 1024 * 1024; 
 
 document.addEventListener('DOMContentLoaded', () => {
     const updateForm = document.getElementById('updateForm');
@@ -14,7 +13,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const uploadProgressText = document.getElementById('uploadProgressText');
     const progressContainer = document.getElementById('progressContainer');
 
-    // --- FILE HANDLER (Sama dengan Upload) ---
     if (pdfFileInput && fileNameDisplay && fileUploadArea) {
         
         fileUploadArea.addEventListener('click', () => pdfFileInput.click());
@@ -25,7 +23,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 const file = pdfFileInput.files[0];
                 if (file.type !== 'application/pdf') {
                     displayStatus('error', 'Hanya file PDF yang diizinkan.');
-                    pdfFileInput.value = ''; // Reset input
+                    pdfFileInput.value = ''; 
                     return;
                 }
                 fileNameDisplay.textContent = `File Baru: ${file.name}`;
@@ -35,7 +33,6 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
 
-        // Drag & Drop
         ['dragenter', 'dragover', 'dragleave', 'drop'].forEach(eventName => {
             fileUploadArea.addEventListener(eventName, (e) => {
                 e.preventDefault(); e.stopPropagation();
@@ -54,19 +51,17 @@ document.addEventListener('DOMContentLoaded', () => {
             const dt = e.dataTransfer;
             const files = dt.files;
             if (files.length > 0) {
-                pdfFileInput.files = files; // Assign file ke input
+                pdfFileInput.files = files; 
                 const event = new Event('change');
                 pdfFileInput.dispatchEvent(event);
             }
         }, false);
     }
 
-    // --- FORM SUBMIT ---
     if (updateForm) {
         updateForm.addEventListener('submit', function(event) {
             event.preventDefault();
 
-            // Validasi File Size (Hanya jika ada file baru)
             if (pdfFileInput.files.length > 0) {
                 const file = pdfFileInput.files[0];
                 if (file.size > MAX_FILE_SIZE) {
@@ -75,7 +70,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
             }
 
-            // UI Loading
             updateButton.disabled = true;
             updateButton.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Menyimpan...';
             
