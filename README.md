@@ -1,174 +1,193 @@
-# 📦 Perancangan Website File Manager untuk Manajemen Modul Praktikum Sains Data
-_(Implementasi MLOps-Based Intelligent Repository System)_
+# Project MLOps: Repository Modul Praktikum Sains Data 🚀
 
----
+**Sistem Repository Cerdas Berbasis Generative AI & Web Application**
 
-## 📌 Overview
-Proyek perancangan dan implementasi **Website File Manager** yang digunakan untuk mengelola modul praktikum Sains Data dalam format PDF secara terstruktur dan terpusat. Sistem akan dikembangkan dengan pendekatan **Machine Learning Operations (MLOps)** serta memanfaatkan **Generative Artificial Intelligence (Large Language Model / LLM)** untuk melakukan ekstraksi metadata dokumen secara otomatis.
+Project ini bertujuan untuk membangun sistem manajemen untuk modul praktikum Sains Data. Sistem ini mengintegrasikan **Workflow MLOps** (Machine Learning Operations) mulai dari pengambilan data (Ingestion), pemrosesan menggunakan LLM (Large Language Model), hingga deployment ke aplikasi web interaktif dengan mekanisme monitoring *Human-in-the-Loop*.
 
-Metadata yang diekstraksi meliputi **mata kuliah, judul topik praktikum, dan deskripsi modul**, yang kemudian disimpan ke dalam basis data dan disajikan melalui antarmuka web berbasis PHP. Dengan pendekatan ini, website tidak hanya berfungsi sebagai media penyimpanan file, tetapi juga sebagai **repositori cerdas** yang mendukung pencarian modul berdasarkan topik dan mata kuliah.
+-----
 
----
+## 📋 Daftar Isi
 
-## 🎯 Objectives
-Tujuan dari proyek ini adalah:
-1. Merancang **Website File Manager** untuk manajemen modul praktikum Sains Data.
-2. Mengimplementasikan **workflow MLOps end-to-end** yang mencakup tahap Build, Deploy, dan Monitor.
-3. Mengintegrasikan **Generative AI (LLM)** untuk otomatisasi ekstraksi metadata dari dokumen PDF.
-4. Menyediakan sistem repositori modul praktikum yang berkelanjutan dan dapat digunakan lintas semester.
-5. Menerapkan mekanisme **Human-in-the-Loop** untuk menjaga akurasi dan tata kelola data.
+1.  [Latar Belakang & Tujuan](https://www.google.com/search?q=%23-latar-belakang--tujuan)
+2.  [Arsitektur Sistem (Workflow)](https://www.google.com/search?q=%23-arsitektur-sistem)
+3.  [Tech Stack](https://www.google.com/search?q=%23%25EF%25B8%258F-tech-stack)
+4.  [Implementasi MLOps (Menjawab Tugas)](https://www.google.com/search?q=%23-implementasi-mlops)
+      - [Tahap 1: Build (Data & Modeling)](https://www.google.com/search?q=%23tahap-1-build-data--modeling)
+      - [Tahap 2: Deploy (Serving)](https://www.google.com/search?q=%23tahap-2-deploy-serving)
+      - [Tahap 3: Monitor (Governance)](https://www.google.com/search?q=%23tahap-3-monitor-governance)
+5.  [Instalasi & Penggunaan](https://www.google.com/search?q=%23-instalasi--penggunaan)
+6.  [Struktur Project](https://www.google.com/search?q=%23-struktur-project)
+7.  [Tim Pengembang](https://www.google.com/search?q=%23-tim-pengembang)
 
----
+-----
 
-## 🧩 Background (Latar Belakang)
-Dalam kegiatan praktikum Sains Data, modul praktikum sering mengalami perubahan setiap semester. Modul lama kerap tidak digunakan kembali meskipun secara konsep masih relevan. Selain itu, penyimpanan modul yang tersebar di berbagai media menyebabkan kesulitan dalam pencarian materi, duplikasi dokumen, serta meningkatnya beban administrasi bagi pengelola.
+## 🎯 Latar Belakang & Tujuan
 
-Berdasarkan konsep **Document Management System** dan **Knowledge Management System**, pengelolaan dokumen yang baik memerlukan repositori terpusat yang mendukung pencarian berbasis metadata. Oleh karena itu, sistem ini dikembangkan sebagai **Website File Manager berbasis AI**, sehingga pengelolaan modul tidak hanya bersifat administratif, tetapi juga mampu memahami isi dokumen secara otomatis.
+**Masalah:** Modul praktikum seringkali tercecer, tidak terstruktur, dan sulit dicari kembali oleh mahasiswa.
+**Solusi:** Membangun repositori terpusat yang mampu membaca isi file PDF secara otomatis dan mengklasifikasikannya menggunakan AI.
 
----
+**Objective (Tujuan Project):**
 
-## 💡 Value Proposition
-### Untuk Administrator
-- Mengurangi proses input metadata secara manual
-- Mempercepat pengelolaan dan dokumentasi modul praktikum
-- Menyediakan kontrol kualitas data melalui mekanisme koreksi manual
+1.  **Mengenal Workflow MLOps:** Menerapkan siklus *Build, Deploy, Monitor*.
+2.  **Otomatisasi Metadata:** Menggunakan GenAI untuk mengekstrak Judul, Topik, dan Deskripsi dari file PDF mentah.
+3.  **Sentralisasi Data:** Menyajikan data dalam Web App yang *user-friendly*.
 
-### Untuk Mahasiswa
-- Memudahkan pencarian modul berdasarkan topik atau mata kuliah
-- Mengakses modul lama dan baru yang masih relevan
-- Mendukung proses belajar mandiri berbasis praktikum
+-----
 
----
+## 🏗 Arsitektur Sistem
 
-## 🏗️ System Architecture
-Sistem dirancang menggunakan **arsitektur hybrid** yang memisahkan proses komputasi berat dan penyajian data.
+Sistem ini menggunakan pendekatan **Hybrid Environment**:
 
-### 1. AI Backend (Python – Google Colab)
-Lingkungan ini digunakan untuk menjalankan pipeline AI, yang meliputi:
-- Pembacaan file PDF menggunakan **PyMuPDF (fitz)**
-- Pengambilan teks dari dua halaman awal dokumen
-- Pembersihan teks menggunakan **Regular Expression**
-- Inferensi menggunakan **Large Language Model**
-- Validasi dan penyimpanan hasil ke dalam file CSV
+1.  **AI Processing Environment (Google Colab):** Digunakan untuk menjalankan model LLM yang berat (Qwen 1.5B) menggunakan GPU T4.
+2.  **Production Environment (Localhost/XAMPP):** Digunakan untuk *User Interface* dan Database manajemen.
 
-Google Colab digunakan karena menyediakan GPU (T4) yang mendukung eksekusi model LLM dengan teknik optimasi memori.
+-----
 
-### 2. Web Application / File Manager (PHP – XAMPP)
-Website berfungsi sebagai:
-- File manager modul praktikum
-- Mesin pencarian metadata modul
-- Antarmuka admin untuk monitoring dan koreksi data
+## 🛠️ Tech Stack
 
-### 3. Database (MySQL)
-Database menyimpan metadata hasil ekstraksi AI dan berfungsi sebagai **single source of truth** untuk sistem. Setiap data memiliki informasi waktu pembuatan dan pembaruan untuk mendukung versioning.
+| Komponen | Tools yang Digunakan | Fungsi Utama |
+| :--- | :--- | :--- |
+| **Data Ingestion** | Python, PyMuPDF (`fitz`), Google Drive | Membaca teks mentah dari file PDF. |
+| **Preprocessing** | Python `re` (Regex), `json` | Membersihkan teks & parsing output AI. |
+| **Model LLM** | **Qwen/Qwen2.5-1.5B-Instruct** | *In-Context Learning* untuk ekstraksi informasi. |
+| **Optimization** | `bitsandbytes` (4-bit Quantization) | Optimasi memori agar berjalan di GPU gratisan. |
+| **Framework** | Hugging Face `transformers`, PyTorch | Pipeline eksekusi model AI. |
+| **Backend** | PHP Native (PDO) | Logika server dan API sederhana. |
+| **Database** | MySQL | Menyimpan metadata terstruktur. |
+| **Frontend** | HTML5, CSS3 (Modern UI), JS | Antarmuka pengguna (Dashboard/Search). |
 
----
+-----
 
-## 🔄 MLOps Workflow
+## 🚀 Implementasi MLOps
 
-### A. Build Stage (Membangun Pipeline AI)
-Tahap Build diimplementasikan pada file `mlops.ipynb`.
+Bagian ini menjelaskan bagaimana project ini memenuhi komponen-komponen MLOps.
 
-#### 1. Data Ingestion
-Sistem membaca seluruh file PDF modul praktikum dari folder Google Drive yang telah ditentukan. Proses pembacaan dilakukan menggunakan library PyMuPDF. Untuk efisiensi komputasi, hanya **dua halaman pertama** yang diambil karena umumnya memuat informasi utama modul.
+### Tahap 1: Build (Data & Modeling)
 
-#### 2. Data Preprocessing
-Teks hasil ekstraksi dibersihkan menggunakan **Regular Expression (regex)** untuk menghilangkan spasi berlebih, baris kosong, dan karakter non-standar. Teks kemudian dipotong maksimal **2500 karakter** agar sesuai dengan batas konteks model LLM.
+**1. Data Ingestion & Preparation**
 
-#### 3. Modeling / Inference
-Pendekatan pemodelan menggunakan **Generative AI dengan In-Context Learning**, tanpa proses training ulang. Model diarahkan menggunakan **Prompt Engineering** agar menghasilkan output dalam format JSON yang berisi mata kuliah, judul topik, dan deskripsi modul.
+  * **Code:** `mlops.ipynb`
+  * **Proses:** Script secara otomatis memindai folder Google Drive (`FOLDER_PATH`). Menggunakan library `PyMuPDF` untuk mengekstrak teks hanya dari **2 halaman pertama** PDF (strategi efisiensi untuk mendapatkan konteks judul/topik).
 
-#### 4. Output Packaging
-Output model divalidasi dengan proses parsing JSON. Data yang valid dikemas ke dalam file CSV (`indexing_final_db.csv`) agar mudah diintegrasikan dengan sistem web dan database.
+**2. Data Preprocessing**
 
----
+  * **Code:** `mlops.ipynb` (Fungsi `get_pdf_content` & `parse_json_response`)
+  * **Proses:**
+      * Membersihkan *whitespace* dan karakter non-standar menggunakan Regex.
+      * *Truncating* teks maksimal 2500 karakter agar muat dalam *Context Window* LLM.
 
-### B. Deploy Stage (Production Release)
-Tahap deploy dilakukan dengan:
-- Mengimpor file CSV ke database MySQL menggunakan `import_data.php`
-- Menyajikan metadata modul melalui website berbasis PHP
-- Mahasiswa dapat mengakses hasil klasifikasi modul melalui fitur pencarian di `index.php`
+**3. Modeling (Generative AI Approach)**
 
-Pendekatan ini menggunakan **batch inference dan batch serving**, karena server web tidak menjalankan inferensi LLM secara real-time.
+  * **Code:** `mlops.ipynb`
+  * **Model:** Menggunakan `Qwen2.5-1.5B-Instruct`.
+  * **Teknik:**
+      * **Quantization:** Menggunakan `load_in_4bit=True` untuk efisiensi komputasi.
+      * **Prompt Engineering:** Menggunakan *System Prompt* ("Kamu adalah asisten akademik...") untuk memaksa model mengeluarkan output dalam format **JSON Valid**.
+  * **Hyperparameter Tuning:**
+      * `temperature = 0.1` (Sangat rendah agar output konsisten/deterministik).
+      * `max_new_tokens = 450` (Agar deskripsi tidak terpotong).
 
----
+**4. Packaging & Registering**
 
-### C. Monitor Stage (Monitoring & Governance)
-Monitoring sistem dilakukan menggunakan pendekatan **Human-in-the-Loop (HITL)**:
-- Admin memantau hasil ekstraksi melalui halaman `admin.php`
-- Kesalahan klasifikasi dapat diperbaiki melalui `update.php`
-- Data yang tidak relevan dapat dihapus melalui `delete_document.php`
+  * **Packaging:** Output prediksi dikemas dari JSON menjadi file CSV (`indexing_final_db.csv`).
+  * **Registering:** File CSV diimpor ke Database MySQL (`import_data.php`) agar resmi terdaftar dalam sistem produksi.
 
-Pendekatan ini memastikan hasil AI tetap akurat dan dapat dikontrol secara manual.
+-----
 
----
+### Tahap 2: Deploy (Serving)
 
-## 🧰 MLOps Components & Tools
+Sistem menggunakan strategi **Batch Inference** dengan **Web Serving**.
 
-| Komponen | Tools | Fungsi |
-|--------|------|--------|
-| Data Ingestion | Python, PyMuPDF | Membaca dan mengekstraksi PDF |
-| Data Preprocessing | Regex, JSON | Membersihkan teks |
-| Model Framework | PyTorch, Transformers | Menjalankan LLM |
-| Model Optimization | BitsAndBytes (4-bit) | Efisiensi memori GPU |
-| Deployment | XAMPP (PHP, MySQL) | Penyajian web |
-| Monitoring | Admin Dashboard | Human-in-the-Loop |
+**1. Production Release**
 
----
+  * Aplikasi web dideploy menggunakan server lokal (XAMPP/Apache).
+  * File `index.php` bertindak sebagai *Serving Layer* dimana pengguna bisa mencari modul.
 
-## 🧠 Modeling Approach
+**2. Online Inference**
 
-### Model yang Digunakan
-- **Qwen/Qwen2.5-1.5B-Instruct**
+  * Meskipun model AI berjalan *offline* (batch), hasil inferensinya disajikan secara *online* melalui fitur pencarian (`script.js` & `api.php`).
+  * Fitur **Upload Modul** (`upload.php`) memungkinkan penambahan data baru secara real-time ke dalam sistem.
 
-Model ini dipilih karena memiliki performa bahasa yang baik, ukuran relatif ringan, serta mendukung instruction-based inference. Model dijalankan menggunakan teknik **4-bit quantization** agar dapat berjalan pada GPU T4 Google Colab.
+-----
 
-### Pengaturan Inferensi
-- `temperature = 0.1` untuk menghasilkan output yang konsisten
-- `max_new_tokens = 450` agar deskripsi tidak terpotong
+### Tahap 3: Monitor (Governance)
 
-Pendekatan ini sesuai dengan praktik **document understanding menggunakan LLM**.
+Menerapkan konsep **Human-in-the-Loop (HITL)** untuk mengatasi kelemahan AI (Halusinasi).
 
----
+**1. Monitoring & Evaluation**
 
-## 📊 Evaluation Strategy
-Evaluasi sistem dilakukan menggunakan:
-1. **Format Validity Rate**: keberhasilan model menghasilkan JSON yang valid
-2. **Human Correction Rate**: frekuensi koreksi manual oleh admin
+  * **Automated Evaluation:** Script Python memvalidasi format JSON sebelum disimpan. Jika format salah, dicatat sebagai `[Error AI Response]`.
+  * **Human Evaluation:** Admin memantau hasil ekstraksi melalui **Admin Dashboard** (`admin.php`).
 
-Evaluasi dilakukan secara offline (validasi JSON otomatis) dan online (validasi manual melalui dashboard).
+**2. Governance (Tata Kelola)**
 
----
+  * Jika AI salah mendeteksi topik atau mata kuliah, Admin dapat melakukan **Intervensi Manual** melalui fitur `update.php`.
+  * Sistem mencatat kapan data dibuat dan diperbarui (`created_at`, `updated_at`) untuk *audit trail*.
 
-## 🚀 Inference Strategy
-- **Offline (Batch Inference)**: seluruh dokumen PDF diproses di Google Colab
-- **Online Serving**: website hanya menyajikan hasil inferensi
+-----
 
-Pendekatan ini menjaga performa website tetap ringan dan stabil.
+## 💻 Instalasi & Penggunaan
 
----
+### Prasyarat
 
-## 🔁 Reproducibility & Versioning
-- Code versioning menggunakan GitHub
-- Model versioning dikunci pada `Qwen/Qwen2.5-1.5B-Instruct`
-- Data versioning menggunakan kolom `created_at` dan `updated_at` di database
+1.  Akun Google (untuk Colab).
+2.  XAMPP (PHP & MySQL) terinstall di komputer lokal.
 
----
+### Langkah 1: Jalankan AI Pipeline (Cloud)
 
-## 🧪 Testing & Reliability
-Pengujian dilakukan dengan memproses seluruh file PDF secara batch. Sistem menggunakan mekanisme `try-except` untuk memastikan proses tetap berjalan meskipun terdapat file yang gagal diproses oleh model.
+1.  Buka file `mlops.ipynb` di Google Colab.
+2.  Upload file PDF modul praktikum ke folder Google Drive.
+3.  Jalankan semua cell. Script akan menghasilkan file `indexing_final_db.csv`.
+4.  Download file CSV tersebut.
 
----
+### Langkah 2: Setup Web App (Local)
 
-## 📂 Key Files
-- `mlops.ipynb` – Pipeline AI
-- `indexing_final_db.csv` – Output metadata
-- `import_data.php` – Import data ke database
-- `index.php` – Search engine
-- `admin.php` – Monitoring data
-- `update.php` – Koreksi metadata
+1.  Clone repository ini ke folder `htdocs` di XAMPP.
+2.  Buat database MySQL baru bernama `project_mlops`.
+3.  Import tabel user dan documents (bisa pakai query SQL standar).
+4.  Jalankan `reset_admin.php` untuk membuat user admin default (User: `admin`, Pass: `123`).
+5.  Letakkan file CSV hasil AI di folder `data/`.
+6.  Buka browser: `http://localhost/folder_project/import_data.php` untuk memasukkan hasil AI ke Database.
 
----
+### Langkah 3: Akses Aplikasi
 
-## 📄 License
-Proyek ini dikembangkan untuk **keperluan pendidikan dan akademik**.
+  * **Dashboard Mahasiswa:** `http://localhost/folder_project/index.php`
+  * **Login Admin:** `http://localhost/folder_project/login.php`
+
+-----
+
+## 📂 Struktur Project
+
+```
+project_mlops/
+├── config/
+│   └── config.php          # Koneksi Database
+├── data/
+│   └── indexing_final_db.csv # Output dari Model AI
+├── uploads/                # Penyimpanan File PDF Fisik
+├── js/
+│   ├── script.js           # Logika Dashboard & Search
+│   ├── script_upload.js    # Logika Upload (Drag & Drop)
+│   └── script_update.js    # Logika Update Data
+├── css/
+│   ├── style.css           # UI Utama (Modern Gradient)
+│   ├── style_admin.css     # UI Halaman Admin
+│   └── ...
+├── mlops.ipynb             # [CORE] Script Python AI/MLOps
+├── index.php               # Halaman Utama (Serving Layer)
+├── admin.php               # Dashboard Monitoring
+├── import_data.php         # Script Registering Model Output
+├── api.php                 # API Endpoint JSON
+└── README.md               # Dokumentasi Project
+```
+
+-----
+
+## 👥 Tim Pengembang
+
+Project ini disusun untuk memenuhi Tugas Besar Mata Kuliah **Machine Learning Operations (MLOps)**, Program Studi Sains Data ITERA 2025.
+
+  * **Platform:** GitHub
+  * **Model ID:** `Qwen/Qwen2.5-1.5B-Instruct`
+
+-----
