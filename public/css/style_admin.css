@@ -1,0 +1,326 @@
+@font-face {
+    font-family: 'Poppins';
+    src: url('/fonts/poppins/Poppins-Regular.ttf') format('truetype');
+    font-weight: 400;
+}
+
+@font-face {
+    font-family: 'Poppins';
+    src: url('/fonts/poppins/Poppins-Bold.ttf') format('truetype');
+    font-weight: 700;
+}
+
+@font-face {
+    font-family: 'TelkomselBatikSans';
+    src: url('/fonts/telkomsel/TelkomselBatikSans-Regular.ttf') format('truetype');
+    font-weight: normal;
+}
+
+@font-face {
+    font-family: 'TelkomselBatikSans';
+    src: url('/fonts/telkomsel/TelkomselBatikSans-Bold.ttf') format('truetype');
+    font-weight: bold;
+}
+
+.admin-page-body {
+    background-color: var(--background-light);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.admin-header {
+    background-color: var(--tc-navy);
+    color: var(--tc-white);
+    padding: var(--spacing-xl) var(--spacing-xl); /* Perubahan di sini: padding vertikal lebih besar */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: var(--shadow-medium);
+}
+
+.admin-header h2 {
+    color: var(--tc-white);
+    margin: 0;
+    font-size: 2.2em;
+    font-family: 'TelkomselBatikSans', sans-serif;
+    font-weight: 700;
+}
+
+.admin-header .back-button, .admin-header .logout-button {
+    text-decoration: none;
+    font-size: 1.1em;
+    padding: var(--spacing-xs) var(--spacing-sm);
+    border-radius: 18px;
+    transition: all 0.2s ease-in-out;
+    display: inline-flex;
+    align-items: center;
+    gap: var(--spacing-xs);
+    box-shadow: var(--shadow-light);
+    font-weight: 600;
+}
+
+.admin-header .back-button {
+    background-color: rgba(255, 255, 255, 0.2);
+    color: var(--tc-white);
+}
+
+.admin-header .back-button:hover {
+    background-color: rgba(255, 255, 255, 0.35);
+    transform: translateY(-1px);
+    box-shadow: var(--shadow-medium);
+}
+
+.admin-header .logout-button {
+    background-color: var(--tc-white);
+    color: var(--tc-red);
+    border: none;
+}
+
+.admin-header .logout-button:hover {
+    background-color: var(--tc-white);
+    color: var(--tc-navy);
+    transform: translateY(-1px);
+    box-shadow: var(--shadow-medium);
+}
+
+.admin-card {
+    background-color: var(--background-card);
+    padding: var(--spacing-xl);
+    border-radius: 8px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.08);
+    margin-bottom: 30px;
+}
+
+.admin-card h3 {
+    margin-top: 0;
+    margin-bottom: 14px;
+    border-bottom: 1px dashed #e0e0e0;
+    padding-bottom: 10px;
+    font-size: 1.8em;
+    font-weight: 700;
+}
+
+.add-user-form .form-grid {
+    display: flex;
+    gap: 16px;
+    margin-bottom: 24px;
+}
+
+.add-user-form .form-group {
+    flex: 1;
+}
+
+.add-user-form .form-group label {
+    font-weight: 600;
+    color: #333;
+    font-size: 1.1em;
+}
+
+.add-user-form .form-group input,
+.add-user-form .form-group select {
+    width: 100%;
+    padding: 10px 12px;
+    border: 1px solid #e0e0e0;
+    border-radius: 4px;
+    box-sizing: border-box;
+    font-size: 1.1em;
+}
+
+.password-input-container {
+    position: relative;
+    width: 100%;
+}
+
+.password-input-container input {
+    width: 100%;
+    padding-right: 40px;
+    box-sizing: border-box;
+}
+
+.toggle-password {
+    position: absolute;
+    right: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+    color: var(--text-light);
+    font-size: 1.2em;
+    transition: color 0.2s;
+}
+
+.toggle-password:hover {
+    color: var(--primary-color);
+}
+
+.user-list-section table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 14px;
+}
+
+.user-list-section th, .user-list-section td {
+    border: 1px solid #e0e0e0;
+    padding: 10px 12px;
+    text-align: left;
+    font-size: 1.1em;
+}
+
+.user-list-section th {
+    background-color: #f5f5f5;
+    color: #333;
+    font-weight: 700;
+}
+
+.user-list-section td .btn-delete-user {
+    background-color: #ff0025;
+    color: #ffffff;
+    border: none;
+    padding: 8px 15px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 1em;
+    transition: background-color 0.2s ease-in-out;
+}
+
+.user-list-section td .btn-delete-user:hover:not([disabled]) {
+    background-color: #680024;
+}
+
+.user-list-section td .btn-delete-user[disabled] {
+    background-color: #dadada;
+    cursor: not-allowed;
+    opacity: 0.7;
+}
+
+.role-tag {
+    padding: 4px 12px;
+    border-radius: 12px;
+    font-size: 0.9em;
+    font-weight: 600;
+    color: #ffffff;
+}
+
+.role-tag.role-admin {
+    background-color: #001a41;
+}
+
+.role-tag.role-user {
+    background-color: #fca12b;
+}
+
+.status-message {
+    opacity: 1;
+    transform: translateY(0);
+    visibility: visible;
+    padding: 10px;
+    border-radius: 4px;
+    font-size: 1em;
+    text-align: center;
+    margin-bottom: 20px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.08);
+    transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.status-message.success {
+    background-color: #e6ffed;
+    color: var(--success-color);
+    border: 1px solid #a8e8b2;
+}
+
+.status-message.error {
+    background-color: #ffeaea;
+    color: var(--tc-red);
+    border: 1px solid #f2c6c6;
+}
+
+.add-user-form .action-buttons {
+    display: flex;
+    justify-content: flex-end;
+    gap: var(--spacing-md);
+}
+
+.add-user-form .submit-button {
+    padding: var(--spacing-sm) var(--spacing-md);
+    font-size: 1em;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all var(--transition-speed);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--spacing-xs);
+    font-weight: 600;
+    box-shadow: var(--shadow-light);
+    background-color: var(--primary-color);
+    color: var(--tc-white);
+}
+
+.add-user-form .submit-button:hover {
+    background-color: var(--primary-dark);
+    transform: translateY(-1px);
+    box-shadow: var(--shadow-medium);
+}
+
+@media (max-width: 992px) {
+    .admin-header {
+        padding: var(--spacing-md);
+        flex-direction: column;
+        gap: var(--spacing-sm);
+        text-align: center;
+    }
+    .admin-header h2 {
+        font-size: 1.6em;
+    }
+    .admin-header .back-button, .admin-header .logout-button {
+        width: 100%;
+        justify-content: center;
+    }
+    .admin-content-wrapper {
+        padding: var(--spacing-md);
+    }
+    .add-user-form .form-grid {
+        flex-direction: column;
+    }
+    .user-list-section table,
+    .user-list-section thead,
+    .user-list-section tbody,
+    .user-list-section th,
+    .user-list-section td,
+    .user-list-section tr {
+        display: block;
+    }
+    .user-list-section thead tr {
+        position: absolute;
+        top: -9999px;
+        left: -9999px;
+    }
+    .user-list-section tr {
+        margin-bottom: 10px;
+        border: 1px solid var(--border-color);
+        border-radius: 4px;
+    }
+    .user-list-section td {
+        border: none;
+        border-bottom: 1px solid #eee;
+        position: relative;
+        padding-left: 50%;
+        text-align: right;
+    }
+    .user-list-section td:before {
+        content: attr(data-label);
+        position: absolute;
+        left: 6px;
+        width: 45%;
+        padding-right: 10px;
+        white-space: nowrap;
+        text-align: left;
+        font-weight: 600;
+        color: var(--text-dark);
+    }
+    .user-list-section td:first-of-type:before { content: "Username:"; }
+    .user-list-section td:nth-of-type(2):before { content: "Role:"; }
+    .user-list-section td:nth-of-type(3):before { content: "Tanggal Dibuat:"; }
+    .user-list-section td:last-of-type:before { content: "Aksi:"; }
+}
