@@ -8,16 +8,16 @@ Project ini bertujuan untuk membangun sistem manajemen untuk modul praktikum Sai
 
 ## 📋 Daftar Isi
 
-1.  [Latar Belakang & Tujuan](https://www.google.com/search?q=%23-latar-belakang--tujuan)
-2.  [Arsitektur Sistem (Workflow)](https://www.google.com/search?q=%23-arsitektur-sistem)
-3.  [Tech Stack](https://www.google.com/search?q=%23%25EF%25B8%258F-tech-stack)
-4.  [Implementasi MLOps (Menjawab Tugas)](https://www.google.com/search?q=%23-implementasi-mlops)
-      - [Tahap 1: Build (Data & Modeling)](https://www.google.com/search?q=%23tahap-1-build-data--modeling)
-      - [Tahap 2: Deploy (Serving)](https://www.google.com/search?q=%23tahap-2-deploy-serving)
-      - [Tahap 3: Monitor (Governance)](https://www.google.com/search?q=%23tahap-3-monitor-governance)
-5.  [Instalasi & Penggunaan](https://www.google.com/search?q=%23-instalasi--penggunaan)
-6.  [Struktur Project](https://www.google.com/search?q=%23-struktur-project)
-7.  [Tim Pengembang](https://www.google.com/search?q=%23-tim-pengembang)
+1.  Latar Belakang & Tujuan
+2.  Arsitektur Sistem (Workflow)
+3.  Tech Stack
+4.  Implementasi MLOps 
+      - Tahap 1: Build (Data & Modeling)
+      - Tahap 2: Deploy (Serving)
+      - Tahap 3: Monitor (Governance)
+5.  Instalasi & Penggunaan
+6.  Struktur Project
+7.  Tim Pengembang
 
 -----
 
