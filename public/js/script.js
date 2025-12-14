@@ -7,15 +7,12 @@ let currentSubjectFilter = 'all';
 let currentPage = 1;
 const documentsPerPage = 9;
 
-// Mapping Kode Matkul
 const SUBJECT_MAP = {
     "DM": "Data Mining", "PS": "Pemodelan Stokastik", "PD": "Pergudangan Data",
     "KP": "Komputasi Paralel", "ADS": "Analisis Data Statistik", "TBD": "Teknologi Basis Data",
     "BD": "Basis Data", "AP": "Algoritma Pemrograman", "DL": "Deep Learning", "ML": "Machine Learning"
 };
 
-// Fungsi pembersih: Hapus spasi & simbol, jadikan kapital
-// Contoh: "Data Mining" -> "DATAMINING"
 function cleanCode(str) {
     if (!str) return '';
     return String(str).replace(/[^a-zA-Z0-9]/g, '').toUpperCase();
@@ -32,7 +29,6 @@ function getValidDateObj(doc) {
     return new Date(dateStr);
 }
 
-// --- INIT ---
 document.addEventListener('DOMContentLoaded', () => {
     fetch(API_URL)
         .then(res => res.json())
@@ -81,12 +77,10 @@ function initScrollReveal() {
     reveals.forEach(el => observer.observe(el));
 }
 
-// --- FILTERING LOGIC (SOLUSI DISINI) ---
 function applyFilters() {
     currentSearchQuery = document.getElementById('searchInput').value.toLowerCase().trim();
     let filtered = allDocuments;
 
-    // 1. Filter Pencarian Teks
     if (currentSearchQuery) {
         const searchTerms = currentSearchQuery.split(/\s+/).map(normalizeText);
         filtered = filtered.filter(doc => {
@@ -96,20 +90,14 @@ function applyFilters() {
         });
     }
 
-    // 2. Filter Kategori Matkul (LOGIKA PINTAR)
     if (currentSubjectFilter !== 'all') {
-        // Target 1: Kode Singkatan (Misal: "PD")
         const targetCode = cleanCode(currentSubjectFilter); 
         
-        // Target 2: Nama Panjang (Misal: "PERGUDANGANDATA")
-        // Kita ambil dari SUBJECT_MAP
         const targetName = cleanCode(SUBJECT_MAP[currentSubjectFilter] || '');
 
         filtered = filtered.filter(doc => {
-            // Ambil kode dari Database (yang isinya mungkin nama panjang)
             const docCode = cleanCode(doc.subject_code);
             
-            // Lolos jika cocok dengan SINGKATAN atau cocok dengan NAMA PANJANG
             return docCode === targetCode || docCode === targetName;
         });
 
@@ -170,7 +158,6 @@ function renderDocuments(documents) {
             openDetailModal(doc);
         };
         
-        // Nama Matkul: Coba mapping, kalau tidak ada pakai data asli
         const matkulName = SUBJECT_MAP[doc.subject_code] || doc.subject_code;
         
         const dateObj = getValidDateObj(doc);
