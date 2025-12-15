@@ -183,9 +183,9 @@ project_mlops/
 
 ## 👥 Tim Pengembang
 
-Arafi Ramadhan Maulana
-Daffa Ahmad Naufal
-Berliana Enda Putri
+Arafi Ramadhan Maulana,
+Daffa Ahmad Naufal,
+Berliana Enda Putri,
 Febiya Jomy Pratiwi 
 
 Project ini disusun untuk memenuhi Tugas Besar Mata Kuliah **Machine Learning Operations (MLOps)**, Program Studi Sains Data ITERA 2025.
